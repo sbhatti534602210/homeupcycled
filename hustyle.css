@@ -1,0 +1,336 @@
+/* this is the basic formatting I want for the page */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.maintheme {
+  background-color: #f5f5f5;
+}
+
+/* dark theme styling */
+body.darktheme {
+  background-color: #333333;
+}
+body.darktheme h1, body.darktheme p, body.darktheme h2, body.darktheme li body.darktheme a {
+  color: #04D9C4;
+}
+/*.darktheme button {
+  background-color: #f5f5f5;
+  color: #8C1308;
+} */
+.themeToggle input[type=checkbox] {
+  display: none;
+}
+/* styling the checkbox as otherwise it is not significant */
+.themeToggle label {
+  background-color: #315955;
+	color: #f5f5f5;
+  padding: 5px;
+  border-radius: 5px;  
+  display: inline-block;
+  position: relative;
+}
+/*  .themeToggle label::after {
+  background-color: #f5f5f5;
+  color: #315955
+}  */
+/* end of dark theme styling */
+
+/* trying to get to grips with sections and containing the content 
+I want a border that kind of looks like stitching and the overall container to not totally fill the browser. */
+.headercontainer {
+/* https://www.w3schools.com/cssref/css3_pr_background-size.asp */
+background-image: url("images/pexels-photo-4913388.jpeg");
+width: 100%;
+min-height: 900px;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+}
+/* I want the content to be in a vertical/ column flow */
+.maincontainer {
+  border: 5px dashed #315955;
+  width: 85%;
+	margin: 0 auto;
+	padding: 1em;
+	display: flex;
+	flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+/* Divider the header*/
+.headerdiv {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  /*justify-items: start;*/
+  background-color: #f5f5f5;
+  opacity: 0.85;
+}
+.headerboxh1 {
+  border: 2px #315955;
+  padding: 0.5rem;
+}
+.headerboxh2 {
+  border: 2px #315955;
+  padding: 0.5rem;
+}
+.headerboxtoggle {
+  border: 2px #315955;
+  justify-items: right;
+  align-items: baseline;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.inspogrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  }
+.inspobox {
+  display: grid;
+  /* border: 1px solid #8C1308; */
+  justify-items: center;
+  justify-content: center;
+}
+
+.carouselgrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.carouselbox {
+  /* border: 1px solid #8C1308; */
+  justify-content: left;
+}
+
+/* navigation menu formatting using unordered list */
+nav {
+  /* width: 95%; */
+  border: 3px dashed #8C1308;
+}
+/* I am not sure this is needed */
+/*nav ul {
+  width: 100%;
+}*/
+nav li {
+  background-color: #8C1308;
+  text-align: center;
+  /* margin-bottom: 0.5rem; */
+  display: inline-block; 
+  /* should I have a minimum width? */
+}
+nav a {
+  /* font-size: 0.85rem; */
+  color: white;
+  font-weight: bold;
+  text-decoration: none; 
+  display: block;
+  padding: 0.5rem;
+}
+nav a:hover {
+  background-color: white;
+  color: #8C1308;
+  box-shadow: 0 0 2px 1px #BF4124;
+}
+/* end of navigation styling */
+
+/* back to main element styling */
+h1, p {
+  color: #315955;
+}
+
+h2 {
+  color: #038c7f;
+}
+
+q {
+  color: #038c7f;
+  font-size: 0.95rem;
+  text-indent: 5%;
+}
+
+.sectioncontainer {
+  border: 3px dashed #038c7f;
+ 	margin: 2px;
+	padding: 1em;
+}
+section a {
+  color: blue;
+  font-size: 110%;
+}
+section a:hover {
+  color: #8C1308;
+  text-decoration: none;
+  box-shadow: #BF4124;
+}
+
+.articlesectioncontainer {
+  border: 3px dotted #038c7f;
+	margin: 1px;
+	padding: 1em;
+  display: flex;
+	flex-flow: row nowrap;
+}
+.articlesectioncontainer h2 {
+  color: #315955;
+}
+.articlebox {
+  border: 3px dotted #315955;
+  width: 33%;
+	margin: 2px;
+	padding: 1em;
+}
+/* end of main elemental styling */
+
+/* image formatting */
+/* change so that the header image is part of the header and is fixed for scrolling*/
+/* I use different images underneath but this is the formatting for the header image */
+/* header img {
+  width: 75%;
+  height: auto;
+} */
+
+.imagedescribe {
+  font-size: 0.75rem;
+}
+
+/* I forgot why I made this combine with image? */
+/* .floatleft {
+  float: left;
+  margin: 0 1rem 1rem 0;
+} */
+
+.sectionimage {
+  width: 35%;
+  height: auto;
+  float: left;
+  margin: 0 1rem 1rem 0;
+}
+
+/* the images are from websites and have different sizes, the object fit crops them */
+.inspoimage {
+  width:300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* image carousel styling */
+#carouselcontainer {
+  display: flex;
+  margin-bottom: 1em;
+}
+/* as with the inspo images, I need these to fit a size and so have to crop them */
+.carouselimage {
+  width: 500px;
+  height: 340px;
+  object-fit: cover;
+  margin: 0 1rem 1rem 0;
+}
+.img-visible {
+  display: block;
+}
+.img-hidden {
+  display: none;
+}
+/* end of carousel styling */
+/* end of image styling */
+
+/* input, lists and non-nav buttons */
+ul {
+  list-style: none;
+  color: #315955;
+  /* list-style: symbols("\2665"); */
+  /* font-size: smaller; */
+} 
+
+/* li {
+  padding-left: 3em;
+} */
+/* styling before the list text */
+li::before {
+  content: "\2665 \2003";
+  color: #8C1308;
+}
+
+#projectIdeas {
+  color: #315955;
+  font-weight: bolder;
+}
+
+input {
+  width: 50%;
+  border: 1px solid #8C1308;
+  padding: 5px;
+  background-color: #f5f5f5;
+}
+
+#inspoList {
+  width: 75%;;
+  /* list-style: square; */
+  font-size: medium;
+  color: #315955;
+}
+
+button {
+	background-color: #8C1308;
+	color: #f5f5f5;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button a:hover {
+  background-color: #f5f5f5;
+  color: #8C1308;
+  box-shadow: 0 0 2px 1px #BF4124;
+}
+/* end of other elements styling */
+
+/* the collapsible section  */
+/* using a button for the section title */
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  /* outline: none; */
+  font-size: 1em;
+}
+.active, .collapsible:hover {
+  background-color: #f5f5f5;
+  color: #8C1308;
+  box-shadow: 0 0 2px 1px #BF4124;
+}
+.collapsiblecontent {
+  width: 100%;
+  display: none;
+  overflow: hidden;
+}
+
+/* footer formatting */
+#footer {
+    padding: 1rem 0 3rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid #8C1308;
+}
+#footer img {
+    height: 50px;
+}
+#footer img:hover {
+    box-shadow: 0 0 2px 1px #BF4124;
+}
+#footer ul {
+    margin: 0;
+    padding: 0;
+    /* list-style: none; */
+    list-style-type: none;
+}
+#footer li {
+    display: inline-block;
+}
+#footer li::before {
+  content: none;
+}
+/* end of footer styling */
