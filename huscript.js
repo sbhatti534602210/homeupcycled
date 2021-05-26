@@ -40,7 +40,9 @@ let currentImageIndex = 0;
 // Add the relevant links to the page depending on the carousel image?
 //https://javascript.info/keys-values-entries
 //could make two areas (ids), one for project name and one for the link as ideal want slightly different styling and want to make the link into an actual a href link
-let projecttext = document.getElementById("projectIdeas"); 
+let projecttextname = document.getElementById("projectIdeasname"); 
+let projecttextlink = document.getElementById("projectIdeaslink");
+let websitelink = document.getElementById("websitelinks");
 //is it possible to make a bigger object, combining details below in projectlinks with the names, descriptions etc from the inspobox images? then the take those details out of the html. the display text will fail if i add more images or change the order.
 let projectlinks = {
   "Striped cushion cover": "https://www.stoffstil.co.uk/free-patterns/cover-for-foam-cushion",
@@ -61,9 +63,15 @@ function updateImageIndex(){
   }
   //should move this out to a separate function?
   // console.log(document.createTextNode(`${currentImageIndex+1} Project: ${Object.keys(projectlinks)[currentImageIndex]}\n link: ${Object.values(projectlinks)[currentImageIndex]}.`));
-  projecttext.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:\n 
-  ${Object.values(projectlinks)[currentImageIndex]}`;
-  // projecttext.innerHTML = `Project ${currentImageIndex+1}: ${Object.keys(projectlinks)[currentImageIndex]}:\n link: ${Object.values(projectlinks)[currentImageIndex]}.`;
+  projecttextname.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:`;
+  projecttextlink.innerHTML = `Website: ${Object.values(projectlinks)[currentImageIndex]}`;
+
+  //trying the anchor link
+  // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}`);
+  let projectanchor = document.createElement("a");
+  document.getElementById("projectAnchor").href = Object.values(projectlinks)[currentImageIndex];
+  // this part seems to break everything:
+  // websitelink.innerHTML = `${Object.values(projectlinks)[currentImageIndex]}`;
 };
 function updateVisibilities() {
   // the main display function: changes whether the image is shown or not
@@ -124,6 +132,18 @@ function nextImage () {
 }
 previousButton.addEventListener("click", previousImage);
 nextButton.addEventListener("click", nextImage);
+// the function to display the project
+// function displayProject () {
+//   projecttextname.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:`;
+//   projecttextlink.innerHTML = `Website: ${Object.values(projectlinks)[currentImageIndex]}`;
+
+//   //trying the anchor link
+//   // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}`);
+//   let projectanchor = document.createElement("a");
+//   document.getElementById("projectAnchor").href = Object.values(projectlinks)[currentImageIndex];
+//   // this part seems to break everything:
+//   // websitelink.innerHTML = `${Object.values(projectlinks)[currentImageIndex]}`;
+// }
 
 // Adding user website links 
 // https://www.w3schools.com/js/js_htmldom_nodes.asp
@@ -135,7 +155,8 @@ let textreason = document.getElementById("reason");
 document.getElementById("addWebsites").addEventListener("click", function () {
   let newListItem = document.createElement("li");
   let textCombined = document.createTextNode(`${textname.value}'s inspo website is ${textlink.value} because ${textreason.value}.`);
-  // I want to make the textlink clickable but couldn't figure it out
+  // I want to make the textlink clickable 
+  // https://www.w3schools.com/jsref/prop_anchor_href.asp
   // let textCombined = document.createTextNode(`${textname.value}'s inspo website is &lt;a href="${textlink.value}"&gt;${textlink.value}</a> because ${textreason.value}.`);
   newListItem.appendChild(textCombined);
   document.getElementById("inspoList").appendChild(newListItem);

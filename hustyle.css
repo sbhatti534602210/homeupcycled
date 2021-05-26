@@ -10,8 +10,20 @@ body {
 body.darktheme {
   background-color: #333333;
 }
-body.darktheme h1, body.darktheme p, body.darktheme h2, body.darktheme li body.darktheme a {
+body.darktheme h1, body.darktheme p, body.darktheme h2, body.darktheme li {
   color: #04D9C4;
+}
+body.darktheme input {
+  background-color: #333333; 
+}
+body.darktheme section a {
+  color: #04D9C4;
+}
+body.darktheme #projectIdeasname {
+  color: #04D9C4;
+}
+body.darktheme .headerdiv {
+  opacity: 0.55;
 }
 /*.darktheme button {
   background-color: #f5f5f5;
@@ -27,12 +39,9 @@ body.darktheme h1, body.darktheme p, body.darktheme h2, body.darktheme li body.d
   padding: 5px;
   border-radius: 5px;  
   display: inline-block;
+  min-width: fit-content;
   position: relative;
 }
-/*  .themeToggle label::after {
-  background-color: #f5f5f5;
-  color: #315955
-}  */
 /* end of dark theme styling */
 
 /* trying to get to grips with sections and containing the content 
@@ -69,18 +78,18 @@ background-size: cover;
 }
 .headerboxh1 {
   border: 2px #315955;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 .headerboxh2 {
   border: 2px #315955;
-  padding: 0.5rem;
+  padding: 2em;
 }
 .headerboxtoggle {
   border: 2px #315955;
   justify-items: right;
   align-items: baseline;
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding: 2rem;
 }
 
 .inspogrid {
@@ -121,6 +130,10 @@ nav li {
   display: inline-block; 
   /* should I have a minimum width? */
 }
+/* do not need the extra space in front of the items as for main li */
+nav li::before {
+  content: none;
+}
 nav a {
   /* font-size: 0.85rem; */
   color: white;
@@ -154,8 +167,17 @@ q {
 .sectioncontainer {
   border: 3px dashed #038c7f;
  	margin: 2px;
-	padding: 1em;
+	padding: 2em;
 }
+/* .sectioncontainer a {
+  color: blue;
+  font-size: 110%;
+}
+.sectioncontainer a:hover {
+  color: #8C1308;
+  text-decoration: none;
+  box-shadow: #BF4124;
+} */
 section a {
   color: blue;
   font-size: 110%;
@@ -255,9 +277,12 @@ li::before {
   color: #8C1308;
 }
 
-#projectIdeas {
+#projectIdeasname {
   color: #315955;
   font-weight: bolder;
+}
+#projectIdeaslink {
+  color: #315955;
 }
 
 label {
@@ -321,7 +346,7 @@ button a:hover {
     padding: 1rem 0 3rem 0;
     text-align: center;
     font-size: 0.8rem;
-    border-top: 1px solid #8C1308;
+    /* border-top: 1px solid #8C1308; */
 }
 #footer img {
     height: 50px;
@@ -331,7 +356,7 @@ button a:hover {
 }
 #footer ul {
     margin: 0;
-    padding: 0;
+    padding: 0.5em;
     /* list-style: none; */
     list-style-type: none;
 }

@@ -9,7 +9,6 @@
       <!--I had to take the script out of here as the js didn't work-->
    </head>
    <body class="maintheme">
-      <!--- When copying back to codepen only copy what is inside the body tag and not the body tag. -->
       <div class="maincontainer">
          <header class="headercontainer">
             <div class="headerboxh1">
@@ -146,13 +145,16 @@
                </div> <!-- to close carouselbox-->
                <div class="carouselbox">
                   <p>Click on the image on the left to link to the project instructions.</p>
-                  <p id="projectIdeas">Project names and their links to follow in just a moment...</p>
+                  <p id="projectIdeasname">Project names to follow in just a moment...</p>
+                  <p id="projectIdeaslink">Sit tight, project links will follow too...</p>
+                  <p id="websitelinks"><a id="projectAnchor" href="" target="_blank">link to website <small>(opens in new window)</small></a></p>
                </div> <!-- to close carouselbox-->
             </div> <!-- to close carouselgrid-->
             <p>Are there websites you are inspired by? Add them below.</p>
             <label for="usersname">Your name: </label><input type="text" id="usersname" placeholder="enter your name."> <br>
             <label for="userswebsite">Website: </label><input type="text" id="userswebsite" placeholder="enter your favourite inspo website."> <br>
             <label for="reason">Reason: </label><input type="text" id="reason" placeholder="why do you love this website?">
+            <br>
             <br>
             <button type="submit" id="addWebsites">Add your favourite website</button>
             <br>
@@ -190,7 +192,6 @@
 
          <button type="button" class="collapsible">Why I am applying for the programme</button>
 <div class="collapsiblecontent">
-
                <p>I came across The Founders and Coders programme earlier this year. I feel like I have learnt so much already through the programme and I would like to continue my learning experience with the group.</p> 
                <p>One of the reasons I am applying is because I am looking to expand my skills and ideally have access to more employment opportunities as it has been a struggle to find work lately. I am hoping to find this through the Founders and Coders programme and ideally the prospective apprenticeship scheme.</p>
                <p>Another reason for my interest is I am attracted by the learning environment of the programme which I have found to be rooted in supportive encouragement and inclusivity. The kind of combined learning system Founders and Coders has created is novel to me but has been great not just for the learning but also for boosting my confidence in the skills I have acquired. </p>
@@ -198,18 +199,19 @@
                <p>On the programme so far, I have learnt from other coachees as well as the mentors and coaches during the workshops and meetups. I have found it an interesting practice and a great learning opportunity to help others with their coding challenges and approach to coding. The process has also helped to clarify my own approach to solving problems. </p>
                <p>I am truly grateful to my fellow coachees and mentors that have contributed to my learning so far. I would like the opportunity to continue to develop with fellow enthusiastic and motivated learners as well as being able to share my own experience and approach.</p>
        </div> <!-- to close collapsible content-->
+       <footer id="footer">
+         <p>Author: Saira Bhatti, profiles on:</p>
+         <ul>
+            <li><a href="https://www.freecodecamp.org/sbhatti" target="_blank"><img src="images/fcc_primary_small.jpg"
+               alt="freecodecamp"></a></li>
+            <li><a href="https://www.codewars.com/users/sbhatti534602210" target="_blank"><img src="images/logo.png"
+               alt="codewars"></a></li>
+            <li><a href="https://github.com/sbhatti534602210/homeupcycled" target="_blank"><img src="images/GitHub-Mark-64px.png"
+               alt="github"></a></li>
+         </ul>
+      </footer> <!-- to close footer -->       
          </section> <!-- to close about me section-->
-         <footer id="footer">
-            <p>Author: Saira Bhatti, profiles on:</p>
-            <ul>
-               <li><a href="https://www.freecodecamp.org/sbhatti" target="_blank"><img src="images/fcc_primary_small.jpg"
-                  alt="freecodecamp"></a></li>
-               <li><a href="https://www.codewars.com/users/sbhatti534602210" target="_blank"><img src="images/logo.png"
-                  alt="codewars"></a></li>
-               <li><a href="https://github.com/sbhatti534602210" target="_blank"><img src="images/GitHub-Mark-64px.png"
-                  alt="github"></a></li>
-            </ul>
-         </footer> <!-- to close footer-->
+
       </div> <!-- to close maincontainer-->
       <!-- adding the script tag here as it did not seem to work in the header-->
       <script src="huscript.js"></script>
