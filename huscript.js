@@ -34,9 +34,9 @@ toggler.addEventListener("input", (changeevent) => {
 const carouselImages = Array.from(document.getElementsByClassName("carouselimage"));
 const startButton = document.querySelector(".ctrlplay");
 const pauseButton = document.querySelectorAll(".ctrlpause")[0];
-const previousButton = document.querySelectorAll(".ctrlprevious")[0]; 
+// const previousButton = document.querySelectorAll(".ctrlprevious")[0]; 
 const nextButton = document.querySelectorAll(".ctrlnext")[0]; 
-let currentImageIndex = 0;
+let currentImageIndex = 0; //initialise at the first item
 // Add the relevant links to the page depending on the carousel image?
 //https://javascript.info/keys-values-entries
 //could make two areas (ids), one for project name and one for the link as ideal want slightly different styling and want to make the link into an actual a href link
@@ -51,7 +51,6 @@ let projectlinks = {
   "Wooden bowl light shade": "https://makeityours.co.uk/how-to-guide/how-to-repurpose-a-wooden-bowl-into-a-lamp-shade/", 
   "Macrame and glass hanging pots": "https://www.ouibyyoplait.com/crafts/macrame-hanging-plants/"
   };
-
 function updateImageIndex(){
   //where you are in the image list
   // console.log(`from updateimageindex fn: ${currentImageIndex}.`);
@@ -61,17 +60,9 @@ function updateImageIndex(){
   } else {
     currentImageIndex++;
   }
-  //should move this out to a separate function?
-  // console.log(document.createTextNode(`${currentImageIndex+1} Project: ${Object.keys(projectlinks)[currentImageIndex]}\n link: ${Object.values(projectlinks)[currentImageIndex]}.`));
-  projecttextname.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:`;
-  projecttextlink.innerHTML = `Website: ${Object.values(projectlinks)[currentImageIndex]}`;
-
-  //trying the anchor link
-  // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}`);
-  let projectanchor = document.createElement("a");
-  document.getElementById("projectAnchor").href = Object.values(projectlinks)[currentImageIndex];
-  // this part seems to break everything:
-  // websitelink.innerHTML = `${Object.values(projectlinks)[currentImageIndex]}`;
+  // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}, passing: ${typeof Object.values(projectlinks)[currentImageIndex]}`);
+  //go to the displayProject function to display
+  displayProject(Object.values(projectlinks)[currentImageIndex]);
 };
 function updateVisibilities() {
   // the main display function: changes whether the image is shown or not
@@ -79,10 +70,12 @@ function updateVisibilities() {
   updateImageIndex();
   carouselImages.forEach((element, index)=>{
     if (index === currentImageIndex) {
+      // console.log(`from uv fn, if, index ${currentImageIndex}`);
       element.classList.remove("img-hidden");
       element.classList.add("img-visible");
     } 
     else {
+      // console.log(`from uv fn, else, foreachindex ${index}, index ${currentImageIndex}`);
       element.classList.remove("img-visible");
       element.classList.add("img-hidden"); 
     }
@@ -99,25 +92,27 @@ const pauseRunning = () => {
 }
 startButton.addEventListener("click", startRunning);
 pauseButton.addEventListener("click", pauseRunning);
-startRunning(); //this starts immediately
+startRunning(); //this usually starts pretty much immediately
 // scroll left and right through images
-// I'm not sure the previous part is working correctly, need to doublecheck
-function previousImage () {
-  console.log(`inside previousimage fn: index ${currentImageIndex} : length ${carouselImages.length}.`);
-  if (currentImageIndex === 0) {
-    //if at the first image then change index so that is the last item
-    console.log(`inside previmg fn, imgindex = ${currentImageIndex}`);
-    currentImageIndex = carouselImages.length -1;
-    // currentImageIndex = 4;
-  }
-  else {
-    //otherwise take one away from index and go back one.
-    // currentImageIndex--;
-    currentImageIndex = currentImageIndex - 1;
-  }
-  updateVisibilities();
-}
-// the next function does seem to work - though it's the opposite of previous
+// I'm not sure the previous part is working correctly
+// function previousImage () {
+//   // console.log(`inside previousimage fn: index ${currentImageIndex}`);
+//   if (currentImageIndex === 0) {
+//     //if at the first image then change index so that is the last item
+//     // console.log(`inside previmg fn, if, imgindex = ${currentImageIndex}`);
+//     currentImageIndex = carouselImages.length -1;
+//     // currentImageIndex = 4;
+//   }
+//   else {
+//     //otherwise take one away from index and go back one.
+//     // console.log(`inside previmg fn, else, imgindex = ${currentImageIndex}`);
+//     // currentImageIndex--;
+//     currentImageIndex = currentImageIndex - 1;
+//   }
+//   // console.log(`inside previmg fn, after imgindex = ${currentImageIndex}`);
+//   updateVisibilities();
+// }
+// the next function does seem to work - though it's just the opposite of previous
 function nextImage () {
   // console.log(`inside nextimage fn: ${currentImageIndex}.`);
   if (currentImageIndex === carouselImages.length -1) {
@@ -130,20 +125,20 @@ function nextImage () {
   }
   updateVisibilities();
 }
-previousButton.addEventListener("click", previousImage);
+// previousButton.addEventListener("click", previousImage());
 nextButton.addEventListener("click", nextImage);
-// the function to display the project
-// function displayProject () {
-//   projecttextname.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:`;
-//   projecttextlink.innerHTML = `Website: ${Object.values(projectlinks)[currentImageIndex]}`;
-
-//   //trying the anchor link
-//   // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}`);
-//   let projectanchor = document.createElement("a");
-//   document.getElementById("projectAnchor").href = Object.values(projectlinks)[currentImageIndex];
-//   // this part seems to break everything:
-//   // websitelink.innerHTML = `${Object.values(projectlinks)[currentImageIndex]}`;
-// }
+// the function to display the project from the object
+function displayProject() {
+  // console.log(`from dp: ${Object.values(projectlinks)[currentImageIndex]}`);
+  projecttextname.innerHTML = `Project ${currentImageIndex+1}, ${Object.keys(projectlinks)[currentImageIndex]}:`;
+  projecttextlink.innerHTML = `Website: ${Object.values(projectlinks)[currentImageIndex]}`;
+  //trying the anchor link
+  // console.log(`thelink: ${Object.values(projectlinks)[currentImageIndex]}`);
+  let projectanchor = document.createElement("a");
+  document.getElementById("projectAnchor").href = Object.values(projectlinks)[currentImageIndex];
+  // this part does display the weblink but loses the anchor tagged clickable aspect and get error in console
+  // websitelink.innerHTML = Object.values(projectlinks)[currentImageIndex];
+}
 
 // Adding user website links 
 // https://www.w3schools.com/js/js_htmldom_nodes.asp
@@ -157,7 +152,7 @@ document.getElementById("addWebsites").addEventListener("click", function () {
   let textCombined = document.createTextNode(`${textname.value}'s inspo website is ${textlink.value} because ${textreason.value}.`);
   // I want to make the textlink clickable 
   // https://www.w3schools.com/jsref/prop_anchor_href.asp
-  // let textCombined = document.createTextNode(`${textname.value}'s inspo website is &lt;a href="${textlink.value}"&gt;${textlink.value}</a> because ${textreason.value}.`);
+  // let textCombined = document.createTextNode(`${textname.value}'s inspo website is <a target="_blank" href="${textlink.value}">${textlink.value}</a> because ${textreason.value}.`);
   newListItem.appendChild(textCombined);
   document.getElementById("inspoList").appendChild(newListItem);
 });
